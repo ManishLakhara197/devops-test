@@ -1,34 +1,22 @@
 # AWS DevOps CI/CD Starter Project
 
-## Overview
-This project demonstrates a basic CI/CD pipeline using AWS CodePipeline, CloudFormation, Lambda, and EC2.
-
-- Lambda function written in Python (`lambda/`)
-- Simple static frontend served from EC2 (`frontend/`)
-- CloudFormation templates in `cloudformation/`
-- Buildspec for CodeBuild to package Lambda
-
-## Setup
-
-1. Replace `your-key-name` in `cloudformation/main.yml` with your EC2 key pair.
-2. Push this repo to GitHub.
-3. Create CodePipeline with:
-   - Source: GitHub repo (main branch)
-   - Build: AWS CodeBuild using `buildspec.yml`
-   - Deploy: CloudFormation to deploy stack
-
-## Notes
-
-- Lambda code is packaged and uploaded to S3 by CodeBuild.
-- EC2 instance serves simple HTML on port 80.
-- IAM roles are created via CloudFormation (`roles.yml`).
-- You need to create or provide:
-  - EC2 key pair
-  - Permissions to create IAM roles/policies
-
-## Bonus
-
-- Add API Gateway in `lambda-deploy.yml` to expose Lambda via HTTP.
-- Add CloudWatch alarms for monitoring.
-
----
+## Deployment Steps
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ManishLakhara197/devops-test.git
+   ```
+2. Login to Your AWS Account.
+3. Switch to N.Verginia Region ( us-east-1 )
+4. Get Pre-requisites out of the way
+    * Get Key Pair from aws console, or docs :: AMI ami-00ca32bbc84273381
+    * Create KeyPair: name = Manish
+    * InstanceType: t3.micro ( N.Verginia Region)
+5. Deploy All-in-one-main.yml template at cloudformation console.
+    * Use Pre-requisite fetched to fill in parametes
+6. Varify deployment by visiting Outputed ec2 ip address. 
+    * ![alt text](images/ec2.png)
+7. Visit lambda console and run test to get 200 - 'Hello from Lambda!'
+    * ![alt text](images/lambda.png)
+----
+### Up to this point we have deployed infrastructure
+Pipeline setup you will find at word document.
