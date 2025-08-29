@@ -12,11 +12,10 @@ phases:
     commands:
       - echo Packaging Lambda function...
       - cd lambda
-      - zip -r ../lambda.zip .
-      - cd ..
   post_build:
     commands:
       - echo Build completed.
 artifacts:
+  base-directory: lambda
   files:
-    - lambda.zip
+    - index.py

@@ -39,6 +39,10 @@ Resources:
                   - iam:PassRole
                   - lambda:*
                   - ec2:*
+                  - logs:CreateLogGroup # For Logging cloudformation.
+                  - logs:CreateLogStream # For Logging cloudformation.
+                  - logs:PutLogEvents # For Logging cloudformation.
+                  - codestar-connections:UseConnection # Since we are using codeStarConnection.
                 Resource: "*"
 
   CodeBuildServiceRole:
